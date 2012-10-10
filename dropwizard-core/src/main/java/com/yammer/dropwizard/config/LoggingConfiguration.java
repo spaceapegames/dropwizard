@@ -160,6 +160,9 @@ public class LoggingConfiguration {
 
         @JsonProperty
         protected String logFormat;
+        
+        @JsonProperty
+        protected String suffixPattern;
 
         public boolean isEnabled() {
             return enabled;
@@ -183,6 +186,14 @@ public class LoggingConfiguration {
 
         public Optional<String> getLogFormat() {
             return Optional.fromNullable(logFormat);
+        }
+        
+        public String getSuffixPattern(){
+        	return suffixPattern;
+        }
+        
+        public boolean hasSuffixPattern(){
+        	return suffixPattern!=null && !suffixPattern.isEmpty();
         }
     }
 

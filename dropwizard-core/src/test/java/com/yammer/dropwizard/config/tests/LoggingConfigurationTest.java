@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.io.Resources;
 import com.yammer.dropwizard.config.ConfigurationFactory;
 import com.yammer.dropwizard.config.LoggingConfiguration;
+import com.yammer.dropwizard.config.LoggingConfiguration.SyslogConfiguration;
 import com.yammer.dropwizard.validation.Validator;
 import org.junit.Before;
 import org.junit.Test;
@@ -79,5 +80,13 @@ public class LoggingConfigurationTest {
         
         assertThat(file.isValidArchiveConfiguration(),
                    is(true));
+    }
+    
+    @Test
+    public void hasSyslogConfiguration(){
+    	SyslogConfiguration syslog = config.getSyslogConfiguration();
+    	
+    	assertThat(syslog.getSuffixPattern(), is("%date{ISO8601}-[%thread] %-5level %logger{35} - [GAMESERVICE] %msg%n"));
+    	assertThat(syslog.hasSuffixPattern(), is(true));
     }
 }

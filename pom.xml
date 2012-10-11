@@ -34,14 +34,6 @@
 		<jersey.version>1.13</jersey.version>
 	</properties>
 
-	<developers>
-		<developer>
-			<name>Coda Hale</name>
-			<email>coda.hale@gmail.com</email>
-			<timezone>-8</timezone>
-		</developer>
-	</developers>
-
 	<licenses>
 		<license>
 			<name>Apache License 2.0</name>

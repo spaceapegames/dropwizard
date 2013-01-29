@@ -1,19 +1,24 @@
 package com.yammer.dropwizard.json;
 
-import org.codehaus.jackson.map.MapperConfig;
-import org.codehaus.jackson.map.PropertyNamingStrategy;
-import org.codehaus.jackson.map.introspect.AnnotatedField;
-import org.codehaus.jackson.map.introspect.AnnotatedMethod;
-import org.codehaus.jackson.map.introspect.AnnotatedParameter;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.cfg.MapperConfig;
+import com.fasterxml.jackson.databind.introspect.AnnotatedField;
+import com.fasterxml.jackson.databind.introspect.AnnotatedMethod;
+import com.fasterxml.jackson.databind.introspect.AnnotatedParameter;
 
-class AnnotationSensitivePropertyNamingStrategy extends PropertyNamingStrategy {
-    static final AnnotationSensitivePropertyNamingStrategy INSTANCE =
-            new AnnotationSensitivePropertyNamingStrategy();
-    private final PropertyNamingStrategy snakeCase;
+/**
+ * A {@link PropertyNamingStrategy} implementation which, if the declaring class of a property is
+ * annotated with {@link JsonSnakeCase}, uses a {@link LowerCaseWithUnderscoresStrategy}, and uses
+ * the default {@link PropertyNamingStrategy} otherwise.
+ */
+public class AnnotationSensitivePropertyNamingStrategy extends PropertyNamingStrategy {
+    private static final long serialVersionUID = -1372862028366311230L;
 
-    AnnotationSensitivePropertyNamingStrategy() {
+    private final LowerCaseWithUnderscoresStrategy snakeCase;
+
+    public AnnotationSensitivePropertyNamingStrategy() {
         super();
-        this.snakeCase = PropertyNamingStrategy.CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES;
+        this.snakeCase = new LowerCaseWithUnderscoresStrategy();
     }
 
     @Override

@@ -2,49 +2,45 @@ package com.yammer.dropwizard.scala.inject.tests
 
 import org.junit.Test
 import com.sun.jersey.core.util.MultivaluedMapImpl
-import com.simple.simplespec.Spec
 import com.yammer.dropwizard.scala.inject.ScalaOptionStringExtractor
+import org.scalatest.matchers.ShouldMatchers
+import com.simple.simplespec.Mocks
 
-class ScalaOptionStringExtractorTest extends Spec {
+class ScalaOptionStringExtractorTest extends ShouldMatchers with Mocks {
 
-  class `Extracting a parameter` {
     val extractor = new ScalaOptionStringExtractor("name", "default")
 
-    @Test def `has a name` = {
-      extractor.getName.must(be("name"))
+    @Test def `Extracting a parameter has a name` {
+      extractor.getName should equal ("name")
     }
 
-    @Test def `has a default value` = {
-      extractor.getDefaultStringValue.must(be("default"))
+    @Test def `Extracting a parameter has a default value` {
+      extractor.getDefaultStringValue should equal ("default")
     }
 
-    @Test def `extracts the first of a set of parameter values` = {
+    @Test def `Extracting a parameter extracts the first of a set of parameter values` {
       val params = new MultivaluedMapImpl()
       params.add("name", "one")
       params.add("name", "two")
       params.add("name", "three")
 
       val result = extractor.extract(params)
-      result.must(be(Some("one")))
+      result should equal (Some("one"))
     }
 
-    @Test def `uses the default value if no parameter exists` = {
+    @Test def `Extracting a parameter uses the default value if no parameter exists` {
       val params = new MultivaluedMapImpl()
 
       val result = extractor.extract(params)
-      result.must(be(Some("default")))
+      result should equal (Some("default"))
     }
-  }
 
-  class `Extracting a parameter with no default value` {
-    val extractor = new ScalaOptionStringExtractor("name", null)
-
-    @Test def `returns None` = {
+    @Test def `Extracting a parameter with no default value returns None` {
+      val extractor = new ScalaOptionStringExtractor("name", null)
       val params = new MultivaluedMapImpl()
 
       val result = extractor.extract(params)
-      result.must(be(None))
+      result should equal (None)
     }
-  }
 
 }

@@ -2,49 +2,45 @@ package com.yammer.dropwizard.scala.inject.tests
 
 import org.junit.Test
 import com.sun.jersey.core.util.MultivaluedMapImpl
-import com.simple.simplespec.Spec
 import com.yammer.dropwizard.scala.inject.ScalaCollectionStringReaderExtractor
+import org.scalatest.matchers.ShouldMatchers
+import com.simple.simplespec.Mocks
 
-class ScalaCollectionStringReaderExtractorTest extends Spec {
+class ScalaCollectionStringReaderExtractorTest extends ShouldMatchers with Mocks {
 
-  class `Extracting a parameter` {
     val extractor = new ScalaCollectionStringReaderExtractor[Set]("name", "default", Set)
 
-    @Test def `has a name` = {
-      extractor.getName.must(be("name"))
+    @Test def `Extracting a parameter has a name` {
+      extractor.getName should equal ("name")
     }
 
-    @Test def `has a default value` = {
-      extractor.getDefaultStringValue.must(be("default"))
+    @Test def `Extracting a parameter has a default value` {
+      extractor.getDefaultStringValue should equal ("default")
     }
 
-    @Test def `extracts a set of parameter values` = {
+    @Test def `Extracting a parameter extracts a set of parameter values` {
       val params = new MultivaluedMapImpl()
       params.add("name", "one")
       params.add("name", "two")
       params.add("name", "three")
 
       val result = extractor.extract(params).asInstanceOf[Set[String]]
-      result.must(be(Set("one", "two", "three")))
+      result should equal (Set("one", "two", "three"))
     }
 
-    @Test def `uses the default value if no parameter exists` = {
+    @Test def `Extracting a parameter uses the default value if no parameter exists` {
       val params = new MultivaluedMapImpl()
 
       val result = extractor.extract(params).asInstanceOf[Set[String]]
-      result.must(be(Set("default")))
+      result should equal (Set("default"))
     }
-  }
 
-  class `Extracting a parameter with no default value` {
-    val extractor = new ScalaCollectionStringReaderExtractor[Set]("name", null, Set)
-
-    @Test def `returns an empty collection` = {
+    @Test def `Extracting a parameter with no default value returns an empty collection` {
+      val extractor = new ScalaCollectionStringReaderExtractor[Set]("name", null, Set)
       val params = new MultivaluedMapImpl()
 
       val result = extractor.extract(params).asInstanceOf[Set[String]]
-      result.must(be(Set.empty[String]))
+      result should equal (Set.empty[String])
     }
-  }
 
 }

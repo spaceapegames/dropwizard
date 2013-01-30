@@ -48,25 +48,24 @@
 
 	<scm>
 		<connection>scm:git:git@github.com:spaceapegames/betsnap-game-service.git</connection>
-		<tag>v0.5.2-spaceape</tag>
+		<tag>scm:git:git@github.com:spaceapegames/betsnap-game-service.git</tag>
 		<url>scm:git:git@github.com:spaceapegames/betsnap-game-service.git</url>
+        <developerConnection>scm:git:git@github.com:spaceapegames/betsnap-game-service.git</developerConnection>
 	</scm>
-
-	<issueManagement>
-		<system>github</system>
-		<url>http://github.com/codahale/dropwizard/issues#issue/</url>
-	</issueManagement>
-
+	
 	<distributionManagement>
-		<repository>
-			<id>spaceapegames</id>
-			<url>http://spaceapegames.artifactoryonline.com/spaceapegames/libs-releases-local</url>
-		</repository>
-		<snapshotRepository>
-			<id>spaceapegames</id>
-			<url>http://spaceapegames.artifactoryonline.com/spaceapegames/libs-snapshots-local</url>
-		</snapshotRepository>
-	</distributionManagement>
+        <repository>
+            <id>spaceapegames</id>
+            <name>libs-releases</name>
+            <url>https://spaceapegames.artifactoryonline.com/spaceapegames/libs-releases-local/</url>
+        </repository>
+        <snapshotRepository>
+            <id>spaceapegames</id>
+            <name>libs-snapshots</name>
+            <url>https://spaceapegames.artifactoryonline.com/spaceapegames/libs-snapshots-local</url>
+            <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>
+    </distributionManagement>
 
 	<dependencies>
         <dependency>

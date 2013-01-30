@@ -47,10 +47,10 @@
 	</licenses>
 
 	<scm>
-		<connection>scm:git:git@github.com:spaceapegames/betsnap-game-service.git</connection>
-		<tag>scm:git:git@github.com:spaceapegames/betsnap-game-service.git</tag>
-		<url>scm:git:git@github.com:spaceapegames/betsnap-game-service.git</url>
-        <developerConnection>scm:git:git@github.com:spaceapegames/betsnap-game-service.git</developerConnection>
+		<connection>scm:git:git@github.com:spaceapegames/dropwizard.git</connection>
+		<tag>scm:git:git@github.com:spaceapegames/dropwizard.git</tag>
+		<url>scm:git:git@github.com:spaceapegames/dropwizard.git</url>
+        <developerConnection>scm:git:git@github.com:spaceapegames/dropwizard.git</developerConnection>
 	</scm>
 	
 	<distributionManagement>

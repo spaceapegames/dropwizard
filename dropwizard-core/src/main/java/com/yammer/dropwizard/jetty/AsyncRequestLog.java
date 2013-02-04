@@ -174,7 +174,7 @@ public class AsyncRequestLog extends AbstractLifeCycle implements RequestLog {
             buf.append(" -");
         }
 
-        final long now = clock.time();
+        final long now = clock.getTime();
         final long dispatchTime = request.getDispatchTime();
 
         buf.append(' ');

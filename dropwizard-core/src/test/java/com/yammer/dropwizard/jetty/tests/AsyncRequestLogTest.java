@@ -47,7 +47,7 @@ public class AsyncRequestLogTest {
         when(response.getStatus()).thenReturn(200);
         when(response.getContentCount()).thenReturn(8290L);
 
-        when(clock.time()).thenReturn(TimeUnit.SECONDS.toMillis(1353042049));
+        when(clock.getTime()).thenReturn(TimeUnit.SECONDS.toMillis(1353042049));
 
         appenders.addAppender(appender);
 

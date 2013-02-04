@@ -34,7 +34,7 @@
         <dependency>
             <groupId>com.yammer.metrics</groupId>
             <artifactId>metrics-scala_${scala.version}</artifactId>
-            <version>3.0.0-spaceape</version>
+            <version>${metrics.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

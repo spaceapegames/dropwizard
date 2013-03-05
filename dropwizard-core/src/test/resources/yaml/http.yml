@@ -9,6 +9,7 @@ requestLog:
   syslog:
     enabled: false
     host: localhost
+    port: 514
     facility: local0
 gzip:
   enabled: false

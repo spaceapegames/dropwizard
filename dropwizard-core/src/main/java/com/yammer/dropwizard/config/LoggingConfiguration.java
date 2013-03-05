@@ -1,6 +1,7 @@
 package com.yammer.dropwizard.config;
 
 import ch.qos.logback.classic.Level;
+import ch.qos.logback.core.net.SyslogConstants;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
@@ -196,6 +197,9 @@ public class LoggingConfiguration {
         @JsonProperty
         private String host = "localhost";
 
+        @JsonProperty
+        private int port = SyslogConstants.SYSLOG_PORT;
+
         @NotNull
         @JsonProperty
         private Facility facility = Facility.LOCAL0;
@@ -264,6 +268,14 @@ public class LoggingConfiguration {
         
         public void setLogFormat(String logFormat) {
             this.logFormat = logFormat;
+        }
+
+        public int getPort() {
+            return port;
+        }
+
+        public void setPort(int port) {
+            this.port = port;
         }
     }
 

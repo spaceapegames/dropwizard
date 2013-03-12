@@ -112,6 +112,17 @@ public class LogbackFactory {
         return appender;
     }
 
+    public static LogstashAppender buildLogStashAppender(LogstashConfiguration logstash,
+                                               LoggerContext context){
+
+        final LogstashAppender appender = new LogstashAppender(logstash.getHost(),logstash.getPort());
+        appender.setContext(context);
+        addThresholdFilter(appender, logstash.getThreshold());
+        appender.start();
+
+        return appender;
+    }
+
     private static void addThresholdFilter(FilterAttachable<ILoggingEvent> appender, Level threshold) {
         final ThresholdFilter filter = new ThresholdFilter();
         filter.setLevel(threshold.toString());

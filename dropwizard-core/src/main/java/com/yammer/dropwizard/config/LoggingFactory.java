@@ -71,7 +71,11 @@ public class LoggingFactory {
                                                                                    syslog.getLogFormat())));
         }
 
-
+        final LogstashConfiguration logstash = config.getLogstashConfiguration();
+        if (logstash.isEnabled()) {
+            root.addAppender(AsyncAppender.wrap(LogbackFactory.buildLogStashAppender(logstash,
+                    root.getLoggerContext())));
+        }
 
         final MBeanServer server = ManagementFactory.getPlatformMBeanServer();
         try {

@@ -279,6 +279,55 @@ public class LoggingConfiguration {
         }
     }
 
+    public static class LogstashConfiguration {
+
+        @NotNull
+        private boolean enabled = false;
+
+        @NotNull
+        @JsonProperty
+        private Level threshold = Level.ALL;
+
+        @NotNull
+        @JsonProperty
+        private String host = "localhost";
+
+        @JsonProperty
+        private int port = 9999;
+
+        public boolean isEnabled() {
+            return enabled;
+        }
+
+        public void setEnabled(boolean enabled) {
+            this.enabled = enabled;
+        }
+
+        public Level getThreshold() {
+            return threshold;
+        }
+
+        public void setThreshold(Level threshold) {
+            this.threshold = threshold;
+        }
+
+        public String getHost() {
+            return host;
+        }
+
+        public void setHost(String host) {
+            this.host = host;
+        }
+
+        public int getPort() {
+            return port;
+        }
+
+        public void setPort(int port) {
+            this.port = port;
+        }
+    }
+
     @NotNull
     @JsonProperty
     private Level level = Level.INFO;
@@ -301,6 +350,11 @@ public class LoggingConfiguration {
     @NotNull
     @JsonProperty
     private SyslogConfiguration syslog = new SyslogConfiguration();
+
+    @Valid
+    @NotNull
+    @JsonProperty
+    private LogstashConfiguration logstash = new LogstashConfiguration();
 
     public Level getLevel() {
         return level;
@@ -340,5 +394,13 @@ public class LoggingConfiguration {
 
     public void setSyslogConfiguration(SyslogConfiguration config) {
         this.syslog = config;
+    }
+
+    public LogstashConfiguration getLogstashConfiguration() {
+        return logstash;
+    }
+
+    public void setLogstashConfiguration(LogstashConfiguration logstash) {
+        this.logstash = logstash;
     }
 }

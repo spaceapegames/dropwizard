@@ -15,3 +15,7 @@ syslog:
   host: localhost
   facility: local0
   suffixPattern: '%date{ISO8601}-[%thread] %-5level %logger{35} - [GAMESERVICE] %msg%n'
+logstash:
+  enabled: false
+  host: logstash.apelabs.net
+  port: 9999

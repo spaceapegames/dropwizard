@@ -21,7 +21,7 @@ public class LogstashTest {
         event.setThreadName("dog");
         event.setMessage("TEST TEST TEST 123");
 
-        underTest.doAppend(event);
+        //underTest.doAppend(event);
     }
 
 }

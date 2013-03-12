@@ -115,7 +115,7 @@ public class LogbackFactory {
     public static LogstashAppender buildLogStashAppender(LogstashConfiguration logstash,
                                                LoggerContext context){
 
-        final LogstashAppender appender = new LogstashAppender(logstash.getHost(),logstash.getPort());
+        final LogstashAppender appender = new LogstashAppender(logstash.getHost(),logstash.getPort(),logstash.getParams());
         appender.setContext(context);
         addThresholdFilter(appender, logstash.getThreshold());
         appender.start();

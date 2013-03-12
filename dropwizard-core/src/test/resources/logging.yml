@@ -19,3 +19,8 @@ logstash:
   enabled: false
   host: logstash.apelabs.net
   port: 9999
+  params:
+    - name: host
+      value: andys.machine.com
+    - name: service
+      value: userservice

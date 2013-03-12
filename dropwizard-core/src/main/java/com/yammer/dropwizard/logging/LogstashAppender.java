@@ -6,19 +6,22 @@ import ch.qos.logback.core.AppenderBase;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Space Ape Games
  */
 public class LogstashAppender extends AppenderBase<ILoggingEvent> {
 
-    private LogstashEncoder encoder = new LogstashEncoder();
+    private LogstashEncoder encoder;
     private String hostName;
     private int port;
 
-    public LogstashAppender(String hostName, int port){
+    public LogstashAppender(String hostName, int port, List<LogstashParam> params){
         this.hostName = hostName;
         this.port = port;
+        this.encoder = new LogstashEncoder(params);
     }
 
     @Override

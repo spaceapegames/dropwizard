@@ -8,9 +8,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
 
@@ -22,8 +24,10 @@ public class LogstashEncoder {
     private static final ObjectMapper MAPPER = new ObjectMapper().configure(JsonGenerator.Feature.ESCAPE_NON_ASCII, true);
 
     private DateFormat df;
+    private List<LogstashParam> params;
 
-    public LogstashEncoder(){
+    public LogstashEncoder(List<LogstashParam> params){
+        this.params = params;
         df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
     }
@@ -45,6 +49,11 @@ public class LogstashEncoder {
         fieldsNode.put("thread_name", event.getThreadName());
         fieldsNode.put("level", event.getLevel().toString());
         fieldsNode.put("level_value", event.getLevel().toInt());
+        fieldsNode.put("source", event.getLevel().toInt());
+
+        for(LogstashParam param : params){
+            fieldsNode.put(param.getName(),param.getValue());
+        }
 
         IThrowableProxy throwableProxy = event.getThrowableProxy();
         if (throwableProxy != null) {

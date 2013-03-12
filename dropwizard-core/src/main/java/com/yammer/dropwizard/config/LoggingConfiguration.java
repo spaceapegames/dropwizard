@@ -7,15 +7,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.google.common.base.Optional;
 import com.google.common.collect.ImmutableMap;
+import com.yammer.dropwizard.logging.LogstashParam;
 import com.yammer.dropwizard.validation.ValidationMethod;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import java.util.Locale;
-import java.util.Map;
-import java.util.TimeZone;
+import java.util.*;
 
 @SuppressWarnings("UnusedDeclaration")
 public class LoggingConfiguration {
@@ -295,6 +294,9 @@ public class LoggingConfiguration {
         @JsonProperty
         private int port = 9999;
 
+        @JsonProperty
+        private List<LogstashParam> params = new ArrayList<LogstashParam>();
+
         public boolean isEnabled() {
             return enabled;
         }
@@ -325,6 +327,14 @@ public class LoggingConfiguration {
 
         public void setPort(int port) {
             this.port = port;
+        }
+
+        public List<LogstashParam> getParams() {
+            return params;
+        }
+
+        public void setParams(List<LogstashParam> params) {
+            this.params = params;
         }
     }
 

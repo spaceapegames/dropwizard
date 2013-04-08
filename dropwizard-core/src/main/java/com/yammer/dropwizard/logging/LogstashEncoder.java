@@ -58,9 +58,9 @@ public class LogstashEncoder {
         IThrowableProxy throwableProxy = event.getThrowableProxy();
         if (throwableProxy != null) {
             String message = ThrowableProxyUtil.asString(throwableProxy);
-            message = message.replaceAll("\r","\\\\r");
-            message = message.replaceAll("\n","\\\\n");
-            message = message.replaceAll("\t","\\\\t");
+            //message = message.replaceAll("\r","\\\\r");
+            //message = message.replaceAll("\n","\\\\n");
+            //message = message.replaceAll("\t","\\\\t");
 
             fieldsNode.put("stack_trace", message);
         }

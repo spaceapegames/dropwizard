@@ -12,10 +12,11 @@
     <name>Dropwizard</name>
 
     <properties>
-        <jetty.version>8.1.11.v20130520</jetty.version>
-        <slf4j.version>1.7.5</slf4j.version>
-        <logback.version>1.0.13</logback.version>
+        <jetty.version>8.1.8.v20121106</jetty.version>
+        <slf4j.version>1.7.2</slf4j.version>
+        <logback.version>1.0.9</logback.version>
     </properties>
+
 
     <dependencies>
         <dependency>

@@ -28,7 +28,7 @@ public class LogstashEncoder {
 
     public LogstashEncoder(List<LogstashParam> params){
         this.params = params;
-        df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
+        df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
     }
 

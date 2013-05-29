@@ -27,7 +27,9 @@ public class LogstashTest {
         event.setLoggerName("thebruvsinthehouse");
         event.setThreadName("dog");
         event.setMessage("TEST TEST TEST 123");
+        event.setThrowableProxy(new ch.qos.logback.classic.spi.ThrowableProxy(new IllegalArgumentException("Hello")));
         underTest.doAppend(event);
+
     }
 
 }

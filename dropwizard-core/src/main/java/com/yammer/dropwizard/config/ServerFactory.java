@@ -355,7 +355,7 @@ public class ServerFactory {
 
     private Handler createExternalServlet(Environment env) {
         final ServletContextHandler handler = new ServletContextHandler();
-        handler.addFilter(ThreadNameFilter.class, "/*", EnumSet.of(DispatcherType.REQUEST));
+//        handler.addFilter(ThreadNameFilter.class, "/*", EnumSet.of(DispatcherType.REQUEST));
         handler.setBaseResource(env.getBaseResource());
 
         if(!env.getProtectedTargets().isEmpty()) {

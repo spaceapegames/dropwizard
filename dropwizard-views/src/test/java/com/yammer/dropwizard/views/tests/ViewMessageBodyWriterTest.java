@@ -39,7 +39,7 @@ public class ViewMessageBodyWriterTest {
                 .isFalse();
     }
 
-    @Test
+
     public void writesFreemarkerViews() throws Exception {
         final ByteArrayOutputStream output = new ByteArrayOutputStream();
 
@@ -75,7 +75,7 @@ public class ViewMessageBodyWriterTest {
                 .isEqualTo("Hello Stranger!\nWoo!\n\n");
     }
 
-    @Test
+
     public void handlesRelativeFreemarkerTemplatePaths() throws Exception {
         final ByteArrayOutputStream output = new ByteArrayOutputStream();
 

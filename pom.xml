@@ -7,7 +7,7 @@
 	
     <groupId>com.yammer.dropwizard</groupId>
     <artifactId>dropwizard-parent</artifactId>
-    <version>0.6.9-spaceape-SNAPSHOT</version>
+    <version>0.6.9-spaceape</version>
     <packaging>pom</packaging>
     <name>Dropwizard Project</name>
     <url>http://dropwizard.codahale.com/</url>
@@ -49,7 +49,7 @@
 
 	<scm>
 		<connection>scm:git:git@github.com:spaceapegames/dropwizard.git</connection>
-		<tag>scm:git:git@github.com:spaceapegames/dropwizard.git</tag>
+		<tag>v0.6.9-spaceape</tag>
 		<url>scm:git:git@github.com:spaceapegames/dropwizard.git</url>
         <developerConnection>scm:git:git@github.com:spaceapegames/dropwizard.git</developerConnection>
 	</scm>

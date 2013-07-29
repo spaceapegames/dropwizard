@@ -9,7 +9,10 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.sql.Timestamp;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -24,18 +27,23 @@ public class LogstashEncoder {
     private static final ObjectMapper MAPPER = new ObjectMapper().configure(JsonGenerator.Feature.ESCAPE_NON_ASCII, true);
 
     private DateFormat df;
+    private NumberFormat nf = new DecimalFormat("000000000");
     private List<LogstashParam> params;
 
     public LogstashEncoder(List<LogstashParam> params){
         this.params = params;
-        df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.");
+
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
     }
 
     public byte[] doEncode(ILoggingEvent event) throws IOException {
 
         ObjectNode eventNode = MAPPER.createObjectNode();
-        eventNode.put("@timestamp", df.format(new Date(event.getTimeStamp())));
+        long nanoseconds = System.nanoTime() % 100000000;
+        String timestamp = df.format(new Date(event.getTimeStamp()))+nf.format(nanoseconds) + "Z";
+
+        eventNode.put("@timestamp", timestamp);
         eventNode.put("@message", event.getFormattedMessage());
         eventNode.put("@fields", createFields(event));
 

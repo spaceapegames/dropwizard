@@ -7,7 +7,12 @@ import com.yammer.dropwizard.logging.LogstashAppender;
 import com.yammer.dropwizard.logging.LogstashParam;
 import org.junit.Test;
 
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,6 +34,8 @@ public class LogstashTest {
         event.setMessage("TEST TEST TEST 123");
         event.setThrowableProxy(new ch.qos.logback.classic.spi.ThrowableProxy(new IllegalArgumentException("Hello")));
         underTest.doAppend(event);
+
+
 
     }
 

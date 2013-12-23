@@ -22,25 +22,26 @@ public class LogbackFactory {
                                                      LoggerContext context,
                                                      String name,
                                                      Optional<String> logFormat) {
-        final SyslogFormatter layout = new SyslogFormatter(context, syslog.getTimeZone(), name);
-        layout.setOutputPatternAsHeader(false);
-        layout.setContext(context);
-        for (String format : logFormat.asSet()) {
-            layout.setPattern(format);
-        }
-        layout.start();
-
         final SyslogAppender appender = new SyslogAppender();
+        appender.setName(name);
         appender.setContext(context);
+<<<<<<< HEAD
         appender.setLayout(layout);
         if (syslog.hasSuffixPattern()){
         	appender.setSuffixPattern(syslog.getSuffixPattern());
         }
+=======
+>>>>>>> 61d713baf1c62a7583ad200a48a33223b5635c8c
         appender.setSyslogHost(syslog.getHost());
         appender.setPort(syslog.getPort());
 
         appender.setFacility(syslog.getFacility().toString());
         addThresholdFilter(appender, syslog.getThreshold());
+
+        for (String format : logFormat.asSet()) {
+            appender.setSuffixPattern(format);
+        }
+
         appender.start();
 
         return appender;

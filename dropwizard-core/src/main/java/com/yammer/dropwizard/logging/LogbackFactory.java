@@ -25,13 +25,7 @@ public class LogbackFactory {
         final SyslogAppender appender = new SyslogAppender();
         appender.setName(name);
         appender.setContext(context);
-<<<<<<< HEAD
-        appender.setLayout(layout);
-        if (syslog.hasSuffixPattern()){
-        	appender.setSuffixPattern(syslog.getSuffixPattern());
-        }
-=======
->>>>>>> 61d713baf1c62a7583ad200a48a33223b5635c8c
+
         appender.setSyslogHost(syslog.getHost());
         appender.setPort(syslog.getPort());
 
@@ -56,7 +50,7 @@ public class LogbackFactory {
         }
         formatter.start();
 
-        final FileAppender<ILoggingEvent> appender = 
+        final FileAppender<ILoggingEvent> appender =
             file.isArchive() ? new RollingFileAppender<ILoggingEvent>() :
                                new FileAppender<ILoggingEvent>();
 

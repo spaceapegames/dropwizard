@@ -8,18 +8,19 @@
         <version>0.6.14-spaceape-SNAPSHOT</version>
     </parent>
 
-    <artifactId>dropwizard-scala_2.10.0</artifactId>
-    <name>Dropwizard for Scala ${scala.version}</name>
+    <artifactId>dropwizard-scala_2.11</artifactId>
+    <name>Dropwizard for Scala ${scalalib.version}</name>
 
     <properties>
-        <scala.version>2.10.0</scala.version>
+        <scala.version>2.11</scala.version>
+        <scalalib.version>2.11.4</scalalib.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
-            <version>${scala.version}</version>
+            <version>${scalalib.version}</version>
         </dependency>
         <dependency>
             <groupId>com.yammer.dropwizard</groupId>
@@ -29,12 +30,12 @@
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-scala_${scala.version}</artifactId>
-            <version>${jacksonscala.version}</version>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.yammer.metrics</groupId>
             <artifactId>metrics-scala_${scala.version}</artifactId>
-            <version>${metrics.version}</version>
+            <version>3.0.3-spaceape-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -45,7 +46,7 @@
         <dependency>
 			<groupId>org.scalatest</groupId>
 			<artifactId>scalatest_${scala.version}</artifactId>
-			<version>2.0.M5</version>
+			<version>2.2.1</version>
 			<scope>test</scope>
 		</dependency>
     </dependencies>
@@ -105,6 +106,15 @@
         </plugins>
         <pluginManagement>
         	<plugins>
+        		<plugin>
+			    <groupId>org.codehaus.mojo</groupId>
+			    <artifactId>findbugs-maven-plugin</artifactId>
+			    <executions>
+			        <execution>
+			            <phase>none</phase>
+			        </execution>
+			    </executions>
+			</plugin>
         		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
         		<plugin>
         			<groupId>org.eclipse.m2e</groupId>

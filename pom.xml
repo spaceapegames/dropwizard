@@ -35,7 +35,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <metrics.version>3.0.2-spaceape</metrics.version>
         <jersey.version>1.16</jersey.version>
-        <jackson.version>2.4.4</jackson.version>
+        <jackson.version>2.2.0</jackson.version>
+        <jacksonscala.version>2.2.2-spaceape-SNAPSHOT</jacksonscala.version>
     </properties>
 
 	<licenses>

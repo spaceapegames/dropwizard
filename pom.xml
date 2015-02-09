@@ -36,7 +36,7 @@
         <metrics.version>3.0.2-spaceape</metrics.version>
         <jersey.version>1.16</jersey.version>
         <jackson.version>2.2.0</jackson.version>
-        <jacksonscala.version>2.2.2-spaceape-SNAPSHOT</jacksonscala.version>
+        <jacksonscala.version>2.2.3-spaceape</jacksonscala.version>
     </properties>
 
 	<licenses>

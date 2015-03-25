@@ -46,6 +46,10 @@ public abstract class Service<T extends Configuration> {
      */
     public abstract void run(T configuration, Environment environment) throws Exception;
 
+    public T overrideConfiguration(T configuration) {
+        return configuration;
+    }
+
     /**
      * Parses command-line arguments and runs the service. Call this method from a {@code public
      * static void main} entry point in your application.

@@ -48,9 +48,10 @@ public abstract class ConfiguredCommand<T extends Configuration> extends Command
     @Override
     @SuppressWarnings("unchecked")
     public final void run(Bootstrap<?> bootstrap, Namespace namespace) throws Exception {
-        final T configuration = parseConfiguration(namespace.getString("file"),
+        T configuration = parseConfiguration(namespace.getString("file"),
                                                    getConfigurationClass(),
                                                    bootstrap.getObjectMapperFactory().copy());
+        configuration = overrideConfiguration(configuration);
         if (configuration != null) {
             new LoggingFactory(configuration.getLoggingConfiguration(),
                                bootstrap.getName()).configure();
@@ -69,6 +70,10 @@ public abstract class ConfiguredCommand<T extends Configuration> extends Command
     protected abstract void run(Bootstrap<T> bootstrap,
                                 Namespace namespace,
                                 T configuration) throws Exception;
+
+    protected T overrideConfiguration(T configuration){
+        return configuration;
+    }
 
     private T parseConfiguration(String filename,
                                  Class<T> configurationClass,

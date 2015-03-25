@@ -39,6 +39,11 @@ public abstract class EnvironmentCommand<T extends Configuration> extends Config
         run(environment, namespace, configuration);
     }
 
+    @Override
+    protected T overrideConfiguration(T configuration) {
+        return service.overrideConfiguration(configuration);
+    }
+
     /**
      * Runs the command with the given {@link Environment} and {@link Configuration}.
      *
